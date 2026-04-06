@@ -1,0 +1,4 @@
+.aidesigner/*
+!.aidesigner/.gitkeep
+.DS_Store
+.mcp.json
