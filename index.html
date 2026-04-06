@@ -188,6 +188,18 @@
         .wave-dark-1 { animation: waveDark1 9s ease-in-out infinite; }
         .wave-dark-2 { animation: waveDark2 11s ease-in-out infinite; }
 
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animated-wave, .wave-1, .wave-2, .wave-3,
+            .animated-wave-dark, .wave-dark-1, .wave-dark-2 { animation: none !important; }
+        }
+
+        /* Mobile menu open state */
+        .mobile-menu-open #menu-overlay { opacity: 1; pointer-events: auto; }
+        .mobile-menu-open #menu-drawer { transform: translateX(0); }
+        .mobile-menu-open #mobile-menu { pointer-events: auto; }
+        .mobile-menu-open { overflow: hidden; }
+
         /* Washi Noise Overlay */
         .washi-grain {
             position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.12; mix-blend-mode: multiply;
@@ -232,11 +244,38 @@
                 <div class="magnetic-wrap"><a href="#company" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Company</a></div>
             </nav>
 
-            <button class="md:hidden text-wa_walnut cursor-hover">
-                <i class="ph ph-list text-2xl"></i>
+            <button class="md:hidden text-wa_walnut cursor-hover" id="menu-toggle" aria-label="メニューを開く">
+                <i class="ph ph-list text-2xl" id="menu-icon"></i>
             </button>
         </div>
     </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-[45] pointer-events-none">
+        <div id="menu-overlay" class="absolute inset-0 bg-wa_walnut/60 opacity-0 transition-opacity duration-500"></div>
+        <nav id="menu-drawer" class="absolute top-0 right-0 w-[80%] max-w-[320px] h-full bg-wa_cream shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col pt-28 px-8 pb-12">
+            <div class="flex flex-col gap-0 border-t border-wa_walnut/10">
+                <a href="#philosophy" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
+                    企業理念 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Philosophy</span>
+                </a>
+                <a href="#packaging" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
+                    パウチ事業 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Packaging</span>
+                </a>
+                <a href="#divisions" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
+                    事業領域 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Divisions</span>
+                </a>
+                <a href="#company" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
+                    会社概要 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Company</span>
+                </a>
+            </div>
+            <div class="mt-auto">
+                <a href="#" class="inline-flex items-center gap-2 bg-wa_walnut text-wa_cream px-6 py-3 text-sm font-sans tracking-widest w-full justify-center">
+                    <i class="ph ph-envelope-simple"></i> CONTACT
+                </a>
+                <p class="font-sans text-[0.6rem] text-wa_walnut/40 tracking-[0.15em] mt-6 text-center uppercase">&copy; 2024 Ayanodou LLC.</p>
+            </div>
+        </nav>
+    </div>
 
     <!-- MAIN WRAPPER -->
     <main id="smooth-wrapper">
@@ -270,15 +309,15 @@
                                     Since 2024 — Tokyo, Japan
                                 </span>
                             </div>
-                            <h1 class="font-serif text-wa_cream text-4xl md:text-[4.5rem] leading-[1.3] tracking-wide font-medium mb-8" id="hero-title" data-split="chars">
+                            <h1 class="font-serif text-wa_cream text-3xl sm:text-4xl md:text-[4.5rem] leading-[1.4] md:leading-[1.3] tracking-wide font-medium mb-6 md:mb-8" id="hero-title" data-split="chars">
                                 包むことは、<br><span class="text-wa_gold">心を</span>包むこと。
                             </h1>
-                            <p class="font-serif text-wa_cream/70 text-lg md:text-xl leading-relaxed max-w-lg hero-description">
+                            <p class="font-serif text-wa_cream/70 text-base md:text-xl leading-relaxed max-w-lg hero-description">
                                 自然と共に、確かな品質を形にする。<br>
                                 東京・新宿から届ける、ものづくりの真心。
                             </p>
 
-                            <div class="mt-10 flex items-center gap-8 hero-cta">
+                            <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 hero-cta">
                                 <a href="#packaging" class="inline-flex items-center gap-3 bg-wa_gold/90 text-wa_walnut px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_cream transition-colors duration-300 rounded-sm cursor-hover magnetic-wrap">
                                     事業を見る
                                     <i class="ph ph-arrow-down"></i>
@@ -366,69 +405,48 @@
                 </div>
             </section>
 
-            <!-- HORIZONTAL SCROLL: CORE BUSINESSES -->
+            <!-- CORE BUSINESSES (Horizontal on desktop, stacked on mobile) -->
             <section id="packaging" class="relative bg-wa_paper overflow-hidden">
-                <!-- Pin wrapper — GSAP pins this and translates the inner track -->
-                <div id="horizontal-pin" class="relative" style="height: 100vh;">
+                <!-- Desktop: Pin + horizontal scroll -->
+                <div id="horizontal-pin" class="relative hidden md:block" style="height: 100vh;">
                     <div id="horizontal-track" class="flex h-full" style="width: 200vw;">
 
                         <!-- PANEL 01: パッケージ・パウチ事業 -->
                         <div class="relative w-screen h-full flex-shrink-0 flex items-center overflow-hidden">
-                            <div class="absolute top-[5%] -left-[5%] text-[20rem] md:text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">01</div>
-
-                            <div class="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center w-full">
-                                <div class="w-full md:w-7/12 aspect-square md:aspect-[4/3] overflow-hidden clip-curtain js-reveal-img relative shadow-2xl">
+                            <div class="absolute top-[5%] -left-[5%] text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">01</div>
+                            <div class="max-w-[1600px] mx-auto px-12 relative z-10 flex flex-row items-center w-full">
+                                <div class="w-7/12 aspect-[4/3] overflow-hidden clip-curtain js-reveal-img relative shadow-2xl">
                                     <img src="./images/pouch-main.jpg" alt="綾乃堂が手がける多彩なパウチ・パッケージ製品" class="object-cover w-full h-[120%]">
                                     <div class="absolute inset-0 bg-wa_walnut/10 mix-blend-overlay"></div>
                                 </div>
-
-                                <div class="w-full md:w-5/12 md:-ml-24 mt-12 md:mt-0 glass-panel p-10 md:p-16 z-20 js-fade-up relative">
+                                <div class="w-5/12 -ml-24 glass-panel p-16 z-20 js-fade-up relative">
                                     <span class="font-sans text-wa_gold text-xs tracking-[0.3em] uppercase block mb-6">Core Business</span>
-                                    <h3 class="font-serif text-3xl md:text-4xl text-wa_walnut mb-8 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-8">
-                                        パッケージ・<br>パウチ事業
-                                    </h3>
-                                    <p class="font-sans text-wa_walnut/70 leading-[2] text-sm md:text-base mb-10">
-                                        商品の魅力を最大限に引き立てる、高品質なスタンドパウチの企画・製造・販売。<br><br>
-                                        オーガニックな和紙のような質感、高いバリア性による長期保存の実現、そして環境負荷に配慮した素材選び。小ロットからのオーダーメイドにも対応し、ブランド価値の向上をサポートします。
-                                    </p>
-                                    <a href="#" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">
-                                        事業詳細を見る
-                                        <i class="ph ph-arrow-right"></i>
-                                    </a>
+                                    <h3 class="font-serif text-4xl text-wa_walnut mb-8 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-8">パッケージ・<br>パウチ事業</h3>
+                                    <p class="font-sans text-wa_walnut/70 leading-[2] text-base mb-10">商品の魅力を最大限に引き立てる、高品質なスタンドパウチの企画・製造・販売。<br><br>オーガニックな和紙のような質感、高いバリア性による長期保存の実現、そして環境負荷に配慮した素材選び。小ロットからのオーダーメイドにも対応し、ブランド価値の向上をサポートします。</p>
+                                    <a href="#" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- PANEL 02: サプリメント事業 -->
                         <div class="relative w-screen h-full flex-shrink-0 flex items-center overflow-hidden">
-                            <div class="absolute top-[5%] -left-[5%] text-[20rem] md:text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">02</div>
-
-                            <div class="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center w-full">
-                                <div class="w-full md:w-7/12 aspect-square md:aspect-[4/3] overflow-hidden relative shadow-2xl">
+                            <div class="absolute top-[5%] -left-[5%] text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">02</div>
+                            <div class="max-w-[1600px] mx-auto px-12 relative z-10 flex flex-row items-center w-full">
+                                <div class="w-7/12 aspect-[4/3] overflow-hidden relative shadow-2xl">
                                     <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1200&q=80" alt="厳選された天然素材のサプリメント" class="object-cover w-full h-full">
                                     <div class="absolute inset-0 bg-wa_walnut/10 mix-blend-overlay"></div>
                                 </div>
-
-                                <div class="w-full md:w-5/12 md:-ml-24 mt-12 md:mt-0 glass-panel p-10 md:p-16 z-20 relative">
+                                <div class="w-5/12 -ml-24 glass-panel p-16 z-20 relative">
                                     <span class="font-sans text-wa_gold text-xs tracking-[0.3em] uppercase block mb-6">Supplement</span>
-                                    <h3 class="font-serif text-3xl md:text-4xl text-wa_walnut mb-8 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-8">
-                                        サプリメント<br>事業
-                                    </h3>
-                                    <p class="font-sans text-wa_walnut/70 leading-[2] text-sm md:text-base mb-10">
-                                        大自然の恵みを凝縮し、日々の健康と美しさをサポート。最新の海外原料からOEM製造まで一貫対応。<br><br>
-                                        GMP準拠の製造体制で安心・安全な製品を企画から販売まで一貫して行い、現代人のライフスタイルに寄り添うサプリメントをお届けします。
-                                    </p>
-                                    <a href="#" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">
-                                        事業詳細を見る
-                                        <i class="ph ph-arrow-right"></i>
-                                    </a>
+                                    <h3 class="font-serif text-4xl text-wa_walnut mb-8 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-8">サプリメント<br>事業</h3>
+                                    <p class="font-sans text-wa_walnut/70 leading-[2] text-base mb-10">大自然の恵みを凝縮し、日々の健康と美しさをサポート。最新の海外原料からOEM製造まで一貫対応。<br><br>GMP準拠の製造体制で安心・安全な製品を企画から販売まで一貫して行い、現代人のライフスタイルに寄り添うサプリメントをお届けします。</p>
+                                    <a href="#" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- Dark animated wave peeking at bottom -->
+                    <!-- Dark animated wave (desktop) -->
                     <div class="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
                         <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 70px;">
                             <path class="animated-wave-dark wave-dark-1" d="M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z" fill="#1C1510" opacity="1"/>
@@ -436,13 +454,55 @@
                         </svg>
                     </div>
                 </div>
+
+                <!-- Mobile: Stacked vertical layout -->
+                <div class="md:hidden">
+                    <!-- パッケージ・パウチ事業 -->
+                    <div class="relative py-16 px-6">
+                        <div class="absolute top-0 -left-4 text-[8rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">01</div>
+                        <div class="relative z-10">
+                            <div class="w-full aspect-[4/3] overflow-hidden relative shadow-xl rounded-sm mb-6">
+                                <img src="./images/pouch-main.jpg" alt="綾乃堂が手がける多彩なパウチ・パッケージ製品" class="object-cover w-full h-full">
+                            </div>
+                            <div class="glass-panel p-6 -mt-12 relative z-20 mx-4">
+                                <span class="font-sans text-wa_gold text-[0.65rem] tracking-[0.3em] uppercase block mb-4">Core Business</span>
+                                <h3 class="font-serif text-2xl text-wa_walnut mb-4 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-4">パッケージ・パウチ事業</h3>
+                                <p class="font-sans text-wa_walnut/70 leading-[1.9] text-sm mb-6">商品の魅力を最大限に引き立てる、高品質なスタンドパウチの企画・製造・販売。小ロットからのオーダーメイドにも対応し、ブランド価値の向上をサポートします。</p>
+                                <a href="#" class="inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-6 py-3 text-xs tracking-widest font-sans rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- サプリメント事業 -->
+                    <div class="relative py-16 px-6">
+                        <div class="absolute top-0 -left-4 text-[8rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">02</div>
+                        <div class="relative z-10">
+                            <div class="w-full aspect-[4/3] overflow-hidden relative shadow-xl rounded-sm mb-6">
+                                <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80" alt="厳選された天然素材のサプリメント" class="object-cover w-full h-full">
+                            </div>
+                            <div class="glass-panel p-6 -mt-12 relative z-20 mx-4">
+                                <span class="font-sans text-wa_gold text-[0.65rem] tracking-[0.3em] uppercase block mb-4">Supplement</span>
+                                <h3 class="font-serif text-2xl text-wa_walnut mb-4 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-4">サプリメント事業</h3>
+                                <p class="font-sans text-wa_walnut/70 leading-[1.9] text-sm mb-6">大自然の恵みを凝縮し、日々の健康と美しさをサポート。GMP準拠の製造体制で安心・安全な製品を企画から販売まで一貫して行います。</p>
+                                <a href="#" class="inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-6 py-3 text-xs tracking-widest font-sans rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dark animated wave (mobile) -->
+                    <div class="w-full pointer-events-none -mb-1">
+                        <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 50px;">
+                            <path class="animated-wave-dark wave-dark-1" d="M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z" fill="#1C1510"/>
+                        </svg>
+                    </div>
+                </div>
             </section>
 
             <!-- DIVISIONS -->
-            <section id="divisions" class="py-32 bg-wa_dark text-wa_cream relative z-10 -mt-1">
+            <section id="divisions" class="py-16 md:py-32 bg-wa_dark text-wa_cream relative z-10 -mt-1">
                 <div class="max-w-[1400px] mx-auto px-6 md:px-12">
 
-                    <div class="mb-24 flex flex-col md:flex-row justify-between items-end gap-12 border-b border-white/10 pb-12">
+                    <div class="mb-12 md:mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-12 border-b border-white/10 pb-8 md:pb-12">
                         <div class="overflow-hidden">
                             <h2 class="font-serif text-4xl md:text-5xl tracking-widest mb-4 js-fade-up">多様な事業展開</h2>
                             <p class="font-sans text-wa_gold tracking-[0.2em] text-xs uppercase js-fade-up">Diverse Divisions of Expertise</p>
@@ -452,7 +512,7 @@
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 lg:gap-x-16 gap-y-24">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-16 gap-y-12 md:gap-y-24">
 
                         <!-- 03 Traditional Dolls -->
                         <a href="#" class="bento-card group cursor-hover block js-fade-up">
@@ -519,7 +579,7 @@
             </section>
 
             <!-- COMPANY PROFILE -->
-            <section id="company" class="py-32 bg-wa_cream relative z-20">
+            <section id="company" class="py-16 md:py-32 bg-wa_cream relative z-20">
                 <div class="max-w-[1000px] mx-auto px-6 md:px-12 relative overflow-hidden">
 
                     <div class="text-center mb-16 js-fade-up">
@@ -583,7 +643,7 @@
             </section>
 
             <!-- FOOTER -->
-            <footer class="bg-wa_dark text-wa_cream pt-32 pb-12 relative overflow-hidden" id="footer">
+            <footer class="bg-wa_dark text-wa_cream pt-16 md:pt-32 pb-12 relative overflow-hidden" id="footer">
                 <div class="absolute top-[20%] left-0 whitespace-nowrap text-[8vw] font-serif text-white/5 font-bold tracking-tighter select-none pointer-events-none js-parallax-x" data-speed="200">
                     AYANODOU LLC. TOKYO JAPAN
                 </div>
@@ -599,7 +659,7 @@
                             </p>
                         </div>
 
-                        <div class="flex flex-wrap md:flex-nowrap gap-16 md:gap-24 font-sans text-xs tracking-[0.15em] text-wa_cream/70 js-fade-up" style="transition-delay: 0.1s;">
+                        <div class="flex flex-wrap md:flex-nowrap gap-8 md:gap-24 font-sans text-xs tracking-[0.15em] text-wa_cream/70 js-fade-up" style="transition-delay: 0.1s;">
                             <div class="flex flex-col gap-6">
                                 <h4 class="text-wa_gold font-medium tracking-[0.2em]">MENU</h4>
                                 <a href="#philosophy" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Philosophy / 企業理念</a>
@@ -775,10 +835,10 @@
                     onLeaveBack: () => document.getElementById('main-header').classList.remove('header-scrolled')
                 });
 
-                // Horizontal scroll for core businesses
+                // Horizontal scroll for core businesses (desktop only)
                 const horizontalTrack = document.getElementById('horizontal-track');
                 const horizontalPin = document.getElementById('horizontal-pin');
-                if (horizontalTrack && horizontalPin) {
+                if (horizontalTrack && horizontalPin && window.innerWidth >= 768) {
                     const scrollDistance = horizontalTrack.scrollWidth - window.innerWidth;
                     gsap.to(horizontalTrack, {
                         x: -scrollDistance,
@@ -918,6 +978,41 @@
                     });
                 }
             }
+
+            /* =========================================
+               6. MOBILE MENU
+            ========================================= */
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuIcon = document.getElementById('menu-icon');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const menuLinks = document.querySelectorAll('.menu-link');
+
+            function openMenu() {
+                document.body.classList.add('mobile-menu-open');
+                menuIcon.classList.remove('ph-list');
+                menuIcon.classList.add('ph-x');
+                lenis.stop();
+            }
+            function closeMenu() {
+                document.body.classList.remove('mobile-menu-open');
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+                lenis.start();
+            }
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    document.body.classList.contains('mobile-menu-open') ? closeMenu() : openMenu();
+                });
+            }
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', closeMenu);
+            }
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
 
         });
     </script>
