@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パウチ・パッケージ事業 | 合同会社綾乃堂 - AYANODOU</title>
+    <meta name="description" content="合同会社綾乃堂のパウチ・パッケージ事業。食品、サプリメント、コスメ、日用品まで、幅広い分野のスタンドパウチを企画・製造・販売しています。">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa_cream: '#F4F1E9',
+                        wa_walnut: '#33261D',
+                        wa_moss: '#68784E',
+                        wa_gold: '#B59A6D',
+                        wa_paper: '#EBE6D8',
+                        wa_dark: '#1C1510'
+                    },
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        html, body {
+            width: 100%; min-height: 100%;
+            background-color: #F4F1E9; color: #33261D;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt" 1;
+            overflow-x: hidden;
+        }
+        ::selection { background: #68784E; color: #F4F1E9; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #F4F1E9; }
+        ::-webkit-scrollbar-thumb { background: #B59A6D; border-radius: 2px; }
+
+        /* Hero parallax */
+        .hero-bg { will-change: transform; }
+
+        /* Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 30s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-12px) rotate(1deg); }
+            66% { transform: translateY(-6px) rotate(-1deg); }
+        }
+        .float-1 { animation: float 6s ease-in-out infinite; }
+        .float-2 { animation: float 7s ease-in-out infinite 1s; }
+        .float-3 { animation: float 5s ease-in-out infinite 2s; }
+        .float-4 { animation: float 8s ease-in-out infinite 0.5s; }
+
+        /* Gallery hover */
+        .gallery-item {
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(51,38,29,0.15);
+        }
+        .gallery-item img {
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Horizontal scroll section */
+        .scroll-container { cursor: grab; }
+        .scroll-container:active { cursor: grabbing; }
+        .scroll-container::-webkit-scrollbar { display: none; }
+
+        /* Counter animation */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* Cafe-style decorative line */
+        .cafe-line {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, transparent, #B59A6D, transparent);
+        }
+
+        /* Stagger reveal */
+        .reveal-item { opacity: 0; transform: translateY(30px); }
+
+        /* Grain overlay */
+        .grain::after {
+            content: ''; position: fixed; inset: 0;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Smooth image reveal */
+        .img-reveal {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        }
+        .img-reveal.revealed {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+    </style>
+</head>
+<body class="grain">
+
+    <!-- SCROLL PROGRESS -->
+    <div class="fixed top-0 left-0 w-full h-[2px] z-[999]">
+        <div id="scroll-progress" class="h-full bg-wa_gold origin-left" style="transform: scaleX(0);"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-wa_cream/0 transition-all duration-500">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <span class="font-serif text-xl tracking-widest text-wa_walnut group-hover:text-wa_gold transition-colors">綾乃堂</span>
+                <span class="hidden md:inline font-sans text-[0.6rem] tracking-[0.3em] text-wa_gold uppercase">Ayanodou</span>
+            </a>
+            <nav class="flex items-center gap-8 font-sans text-xs tracking-[0.15em]">
+                <a href="index.html" class="text-wa_walnut/60 hover:text-wa_walnut transition-colors hidden md:block">TOP</a>
+                <a href="contact.html" class="bg-wa_walnut text-wa_cream px-5 py-2 hover:bg-wa_gold transition-colors duration-300">
+                    CONTACT
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-wa_walnut">
+        <div class="absolute inset-0 hero-bg">
+            <img src="./images/packaging/20251227合同会社綾乃堂8722 1.jpg" alt="All pouches" class="w-full h-full object-cover opacity-30" id="hero-bg-img">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-wa_walnut/40 via-wa_walnut/60 to-wa_walnut"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="cafe-line mx-auto mb-8 opacity-0" id="hero-line"></div>
+            <p class="font-sans text-wa_gold text-xs tracking-[0.5em] uppercase mb-6 opacity-0" id="hero-sub">Packaging Division</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-wa_cream tracking-wider mb-8 opacity-0" id="hero-title">
+                包む、届ける。
+            </h1>
+            <p class="font-sans text-wa_cream/60 text-sm md:text-base leading-[2.4] max-w-lg mx-auto opacity-0" id="hero-desc">
+                食品からコスメ、日用品まで。<br>
+                あらゆるプロダクトに最適なパッケージを<br>
+                企画・デザイン・製造いたします。
+            </p>
+            <div class="mt-12 opacity-0" id="hero-cta">
+                <a href="contact.html" class="inline-flex items-center gap-3 border border-wa_gold/40 text-wa_gold px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-wa_gold hover:text-wa_walnut transition-all duration-500">
+                    <i class="ph ph-envelope-simple"></i>
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-0" id="hero-scroll">
+            <div class="flex flex-col items-center gap-3 text-wa_cream/40">
+                <span class="font-sans text-[0.6rem] tracking-[0.3em] uppercase">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-wa_gold/60 to-transparent animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="bg-wa_dark py-5 overflow-hidden border-y border-white/5">
+        <div class="marquee-track flex whitespace-nowrap">
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">STAND POUCH</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">FLEXIBLE PACKAGING</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">CUSTOM DESIGN</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">OEM PRODUCTION</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">STAND POUCH</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">FLEXIBLE PACKAGING</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">CUSTOM DESIGN</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+            <span class="font-serif text-2xl md:text-3xl text-wa_cream/10 tracking-[0.2em] mx-8">OEM PRODUCTION</span>
+            <span class="text-wa_gold/30 mx-4">&bull;</span>
+        </div>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <section class="py-24 md:py-40 bg-wa_cream relative">
+        <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div class="reveal-item">
+                    <span class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase block mb-6">About Our Packaging</span>
+                    <h2 class="font-serif text-3xl md:text-4xl tracking-wider leading-[1.8] mb-8 text-wa_walnut">
+                        商品の魅力を<br>最大限に引き出す<br>パッケージ
+                    </h2>
+                    <div class="cafe-line mb-8"></div>
+                    <p class="font-sans text-sm text-wa_walnut/60 leading-[2.4] mb-6">
+                        綾乃堂では、スタンドパウチを中心とした軟包装パッケージの企画・製造を行っています。食品、サプリメント、コスメティック、日用雑貨など、多種多様な業界のお客様のニーズにお応えします。
+                    </p>
+                    <p class="font-sans text-sm text-wa_walnut/60 leading-[2.4]">
+                        小ロットからの対応、特殊形状パウチ、バリア性能の選定まで、経験豊富なスタッフが最適なソリューションをご提案いたします。
+                    </p>
+                </div>
+                <div class="relative reveal-item">
+                    <div class="relative overflow-hidden">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8698.jpg" alt="Pouch collection" class="w-full img-reveal">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 border border-wa_gold/20"></div>
+                    <div class="absolute -top-6 -right-6 w-24 h-24 border border-wa_moss/20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section class="py-20 bg-wa_walnut relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <img src="./images/packaging/20251227合同会社綾乃堂8722 1.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal-item">
+                    <div class="font-serif text-4xl md:text-5xl text-wa_gold counter" data-target="500">0</div>
+                    <div class="font-sans text-wa_gold/60 text-xs tracking-[0.3em] mt-3">種類以上+</div>
+                    <div class="font-sans text-wa_cream/40 text-[0.65rem] mt-1">パウチ形状</div>
+                </div>
+                <div class="reveal-item">
+                    <div class="font-serif text-4xl md:text-5xl text-wa_gold counter" data-target="30">0</div>
+                    <div class="font-sans text-wa_gold/60 text-xs tracking-[0.3em] mt-3">カ国+</div>
+                    <div class="font-sans text-wa_cream/40 text-[0.65rem] mt-1">納品実績</div>
+                </div>
+                <div class="reveal-item">
+                    <div class="font-serif text-4xl md:text-5xl text-wa_gold counter" data-target="100">0</div>
+                    <div class="font-sans text-wa_gold/60 text-xs tracking-[0.3em] mt-3">個~</div>
+                    <div class="font-sans text-wa_cream/40 text-[0.65rem] mt-1">小ロット対応</div>
+                </div>
+                <div class="reveal-item">
+                    <div class="font-serif text-4xl md:text-5xl text-wa_gold counter" data-target="14">0</div>
+                    <div class="font-sans text-wa_gold/60 text-xs tracking-[0.3em] mt-3">日~</div>
+                    <div class="font-sans text-wa_cream/40 text-[0.65rem] mt-1">最短納期</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="py-24 md:py-40 bg-wa_paper">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="text-center mb-20 reveal-item">
+                <span class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase block mb-4">Categories</span>
+                <h2 class="font-serif text-3xl md:text-5xl tracking-wider text-wa_walnut">対応カテゴリ</h2>
+            </div>
+
+            <!-- Food -->
+            <div class="mb-32 reveal-item">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-serif text-6xl md:text-8xl text-wa_walnut/5">01</span>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-wa_walnut tracking-wider">食品・スナック</h3>
+                        <p class="font-sans text-xs text-wa_gold tracking-[0.3em] uppercase mt-1">Food & Snacks</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8528.jpg" alt="Cherry Tomato Crisps" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-1">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8537.jpg" alt="Pineapple Chips" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8547.jpg" alt="Coffee" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-2">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8584.jpg" alt="Matcha" class="w-full aspect-square object-cover">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
+                    <div class="gallery-item overflow-hidden bg-white float-3">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8707 1.jpg" alt="Hey Chips collection" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8611 1.jpg" alt="Chinese tea" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-4">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8525.jpg" alt="Goat milk blueberry" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div class="mb-32 reveal-item">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-serif text-6xl md:text-8xl text-wa_walnut/5">02</span>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-wa_walnut tracking-wider">ドリンク・ティー</h3>
+                        <p class="font-sans text-xs text-wa_gold tracking-[0.3em] uppercase mt-1">Beverages & Tea</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                    <div class="gallery-item overflow-hidden bg-white float-2">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8700.jpg" alt="Juice Soda cans" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8664.jpg" alt="Teaspire Orange" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-1">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8662.jpg" alt="Teaspire Ginger" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 mt-4 md:mt-6">
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8567.jpg" alt="La Coast" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-3">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8576.jpg" alt="Paris Lemon" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8713.jpg" alt="Tea collection" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-4 hidden md:block">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8580.jpg" alt="Candy" class="w-full aspect-square object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health & Beauty -->
+            <div class="mb-32 reveal-item">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-serif text-6xl md:text-8xl text-wa_walnut/5">03</span>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-wa_walnut tracking-wider">ヘルス・ビューティー</h3>
+                        <p class="font-sans text-xs text-wa_gold tracking-[0.3em] uppercase mt-1">Health & Beauty</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="gallery-item overflow-hidden bg-white float-1">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8639.jpg" alt="乳酸菌" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8632.jpg" alt="水素の力" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-2">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8593.jpg" alt="ASANTE Bio-Collagen" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8711.jpg" alt="Supplements" class="w-full aspect-square object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifestyle -->
+            <div class="mb-16 reveal-item">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-serif text-6xl md:text-8xl text-wa_walnut/5">04</span>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-wa_walnut tracking-wider">ライフスタイル・その他</h3>
+                        <p class="font-sans text-xs text-wa_gold tracking-[0.3em] uppercase mt-1">Lifestyle & Others</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8600.jpg" alt="Silk pillow cover" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-3">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8557.jpg" alt="Drying towel" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8656.jpg" alt="STATIK Power bank" class="w-full aspect-square object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-4">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8676.jpg" alt="LED Lighting kraft" class="w-full aspect-square object-cover">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
+                    <div class="gallery-item overflow-hidden bg-white float-1">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8553.jpg" alt="Raw to Roar" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8540.jpg" alt="BIJOUX Chocolates" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                    <div class="gallery-item overflow-hidden bg-white float-2">
+                        <img src="./images/packaging/20251227合同会社綾乃堂8605.jpg" alt="Waffle package" class="w-full aspect-[4/3] object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL WIDTH SHOWCASE -->
+    <section class="relative py-32 md:py-48 bg-wa_walnut overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="./images/packaging/20251227合同会社綾乃堂8698.jpg" alt="" class="w-full h-full object-cover opacity-15">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-wa_walnut via-wa_walnut/80 to-wa_walnut"></div>
+        <div class="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal-item">
+                    <span class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase block mb-6">Our Strength</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-wa_cream tracking-wider leading-[1.8] mb-8">
+                        小ロットから<br>大量生産まで。
+                    </h2>
+                    <div class="cafe-line mb-8"></div>
+                    <div class="space-y-6 font-sans text-sm text-wa_cream/60 leading-[2.2]">
+                        <div class="flex gap-4">
+                            <i class="ph ph-check-circle text-wa_gold text-lg mt-1 shrink-0"></i>
+                            <p>100個からの小ロット対応で、テストマーケティングにも最適</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="ph ph-check-circle text-wa_gold text-lg mt-1 shrink-0"></i>
+                            <p>スタンドパウチ・三方シール・変形パウチなど多彩な形状</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="ph ph-check-circle text-wa_gold text-lg mt-1 shrink-0"></i>
+                            <p>食品グレードの安全基準を満たした高品質素材を使用</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="ph ph-check-circle text-wa_gold text-lg mt-1 shrink-0"></i>
+                            <p>デザインから印刷、充填までワンストップで対応可能</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="ph ph-check-circle text-wa_gold text-lg mt-1 shrink-0"></i>
+                            <p>海外への輸出対応、多言語パッケージもサポート</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 reveal-item">
+                    <div class="space-y-4">
+                        <div class="overflow-hidden float-1"><img src="./images/packaging/20251227合同会社綾乃堂8534.jpg" alt="" class="w-full"></div>
+                        <div class="overflow-hidden float-3"><img src="./images/packaging/20251227合同会社綾乃堂8587.jpg" alt="" class="w-full"></div>
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        <div class="overflow-hidden float-2"><img src="./images/packaging/20251227合同会社綾乃堂8562.jpg" alt="" class="w-full"></div>
+                        <div class="overflow-hidden float-4"><img src="./images/packaging/20251227合同会社綾乃堂8625.jpg" alt="" class="w-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="py-24 md:py-40 bg-wa_cream">
+        <div class="max-w-[1000px] mx-auto px-6 md:px-12">
+            <div class="text-center mb-20 reveal-item">
+                <span class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase block mb-4">Process</span>
+                <h2 class="font-serif text-3xl md:text-5xl tracking-wider text-wa_walnut">ご注文の流れ</h2>
+            </div>
+
+            <div class="space-y-0 relative">
+                <div class="absolute left-[24px] md:left-[28px] top-8 bottom-8 w-[1px] bg-wa_gold/20"></div>
+
+                <div class="flex gap-6 md:gap-10 pb-16 reveal-item">
+                    <div class="shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-wa_walnut flex items-center justify-center relative z-10">
+                        <span class="font-serif text-wa_gold text-lg">01</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl text-wa_walnut tracking-wider mb-2">ヒアリング・ご相談</h3>
+                        <p class="font-sans text-sm text-wa_walnut/50 leading-[2]">商品の特性、ご予算、数量、納期をお伺いし、最適なパッケージをご提案いたします。</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 md:gap-10 pb-16 reveal-item">
+                    <div class="shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-wa_walnut flex items-center justify-center relative z-10">
+                        <span class="font-serif text-wa_gold text-lg">02</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl text-wa_walnut tracking-wider mb-2">デザイン・入稿</h3>
+                        <p class="font-sans text-sm text-wa_walnut/50 leading-[2]">デザインデータをご入稿いただくか、弊社デザインチームにてパッケージデザインを作成いたします。</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 md:gap-10 pb-16 reveal-item">
+                    <div class="shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-wa_walnut flex items-center justify-center relative z-10">
+                        <span class="font-serif text-wa_gold text-lg">03</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl text-wa_walnut tracking-wider mb-2">サンプル確認</h3>
+                        <p class="font-sans text-sm text-wa_walnut/50 leading-[2]">量産前にサンプルをお送りし、素材・印刷品質・形状をご確認いただきます。</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 md:gap-10 pb-16 reveal-item">
+                    <div class="shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-wa_walnut flex items-center justify-center relative z-10">
+                        <span class="font-serif text-wa_gold text-lg">04</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl text-wa_walnut tracking-wider mb-2">製造・品質検査</h3>
+                        <p class="font-sans text-sm text-wa_walnut/50 leading-[2]">厳格な品質管理のもと、ご注文数量を製造いたします。</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 md:gap-10 reveal-item">
+                    <div class="shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-wa_gold flex items-center justify-center relative z-10">
+                        <span class="font-serif text-wa_walnut text-lg">05</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-xl text-wa_walnut tracking-wider mb-2">納品</h3>
+                        <p class="font-sans text-sm text-wa_walnut/50 leading-[2]">ご指定の場所へ納品いたします。国内はもちろん、海外への発送にも対応しております。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL COLLECTION -->
+    <section class="py-24 md:py-32 bg-wa_dark relative overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 reveal-item">
+                <span class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase block mb-4">Gallery</span>
+                <h2 class="font-serif text-3xl md:text-5xl tracking-wider text-wa_cream">製作実績</h2>
+            </div>
+
+            <div class="reveal-item">
+                <img src="./images/packaging/20251227合同会社綾乃堂8722 1.jpg" alt="Full collection" class="w-full img-reveal">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-40 bg-wa_walnut text-center relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-wa_gold/5 blur-3xl"></div>
+        <div class="relative z-10 reveal-item">
+            <div class="cafe-line mx-auto mb-8"></div>
+            <p class="font-sans text-wa_gold text-xs tracking-[0.4em] uppercase mb-6">Contact Us</p>
+            <h2 class="font-serif text-3xl md:text-5xl text-wa_cream tracking-wider mb-6">
+                パッケージのご相談は<br>お気軽にどうぞ
+            </h2>
+            <p class="font-sans text-sm text-wa_cream/40 leading-[2.2] max-w-md mx-auto mb-12">
+                「こんなパウチは作れる？」「小ロットでも対応できる？」<br>
+                どんなご質問でもお気軽にお問い合わせください。
+            </p>
+            <a href="contact.html" class="inline-flex items-center gap-3 bg-wa_gold text-wa_walnut px-10 py-4 text-sm font-medium tracking-[0.2em] uppercase hover:bg-wa_cream transition-colors duration-500">
+                <i class="ph ph-paper-plane-tilt text-lg"></i>
+                お問い合わせ
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-wa_dark text-wa_cream pt-16 pb-12">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 pb-12 border-b border-white/5">
+                <div>
+                    <h2 class="font-serif text-2xl tracking-widest mb-2 text-wa_cream">綾乃堂</h2>
+                    <p class="font-sans text-[0.6rem] tracking-[0.3em] text-wa_gold uppercase">Ayanodou LLC.</p>
+                </div>
+                <div class="flex gap-8 font-sans text-xs tracking-[0.15em] text-wa_cream/50">
+                    <a href="index.html" class="hover:text-white transition-colors">TOP</a>
+                    <a href="index.html#packaging" class="hover:text-white transition-colors">事業案内</a>
+                    <a href="index.html#company" class="hover:text-white transition-colors">会社概要</a>
+                    <a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-[0.65rem] text-wa_cream/30 tracking-[0.2em] uppercase">
+                <p>&copy; 2024 Ayanodou LLC. All Rights Reserved.</p>
+                <div class="flex items-center gap-3">
+                    <span>Tokyo</span>
+                    <span class="w-[3px] h-[3px] rounded-full bg-wa_gold"></span>
+                    <span>Japan</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Hero animations
+            const heroTl = gsap.timeline({ delay: 0.3 });
+            heroTl
+                .to('#hero-line', { opacity: 1, width: 60, duration: 0.8, ease: 'power3.out' })
+                .to('#hero-sub', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+                .fromTo('#hero-title', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, '-=0.3')
+                .to('#hero-desc', { opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+                .to('#hero-cta', { opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+                .to('#hero-scroll', { opacity: 1, duration: 0.6 }, '-=0.3');
+
+            // Parallax hero background
+            gsap.to('.hero-bg', {
+                y: '30%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-bg',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // Header background on scroll
+            ScrollTrigger.create({
+                trigger: 'body',
+                start: '100px top',
+                onEnter: () => {
+                    document.getElementById('main-header').style.background = 'rgba(244,241,233,0.95)';
+                    document.getElementById('main-header').style.backdropFilter = 'blur(12px)';
+                    document.getElementById('main-header').style.boxShadow = '0 1px 20px rgba(51,38,29,0.06)';
+                },
+                onLeaveBack: () => {
+                    document.getElementById('main-header').style.background = '';
+                    document.getElementById('main-header').style.backdropFilter = '';
+                    document.getElementById('main-header').style.boxShadow = '';
+                }
+            });
+
+            // Scroll progress
+            gsap.to('#scroll-progress', {
+                scaleX: 1, ease: 'none',
+                scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: true }
+            });
+
+            // Reveal items
+            document.querySelectorAll('.reveal-item').forEach(el => {
+                gsap.to(el, {
+                    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+                    scrollTrigger: { trigger: el, start: 'top 92%' }
+                });
+            });
+
+            // Image reveals
+            document.querySelectorAll('.img-reveal').forEach(el => {
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 90%',
+                    onEnter: () => el.classList.add('revealed')
+                });
+            });
+
+            // Counter animation
+            document.querySelectorAll('.counter').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                gsap.to(counter, {
+                    innerText: target,
+                    duration: 2,
+                    ease: 'power2.out',
+                    snap: { innerText: 1 },
+                    scrollTrigger: { trigger: counter, start: 'top 85%' }
+                });
+            });
+
+            // Gallery items staggered reveal
+            document.querySelectorAll('.gallery-item').forEach((item, i) => {
+                gsap.fromTo(item,
+                    { opacity: 0, y: 30, scale: 0.95 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.6,
+                        delay: (i % 4) * 0.1,
+                        ease: 'power3.out',
+                        scrollTrigger: { trigger: item, start: 'top 95%' }
+                    }
+                );
+            });
+
+        });
+    </script>
+
+</body>
+</html>
