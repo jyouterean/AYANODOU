@@ -158,35 +158,35 @@
 
         /* Animated Waves */
         @keyframes waveShift1 {
-            0%   { d: path("M0,60 C240,20 480,0 720,30 C960,60 1200,10 1440,40 L1440,100 L0,100 Z"); }
-            50%  { d: path("M0,40 C200,70 440,10 720,50 C1000,20 1200,60 1440,30 L1440,100 L0,100 Z"); }
-            100% { d: path("M0,60 C240,20 480,0 720,30 C960,60 1200,10 1440,40 L1440,100 L0,100 Z"); }
+            0%   { d: path("M0,75 C240,60 480,50 720,62 C960,74 1200,55 1440,65 L1440,100 L0,100 Z"); }
+            50%  { d: path("M0,68 C200,78 440,55 720,70 C1000,58 1200,72 1440,60 L1440,100 L0,100 Z"); }
+            100% { d: path("M0,75 C240,60 480,50 720,62 C960,74 1200,55 1440,65 L1440,100 L0,100 Z"); }
         }
         @keyframes waveShift2 {
-            0%   { d: path("M0,50 C200,80 400,20 720,45 C1040,70 1240,25 1440,55 L1440,100 L0,100 Z"); }
-            50%  { d: path("M0,65 C280,30 520,60 720,25 C920,50 1180,70 1440,40 L1440,100 L0,100 Z"); }
-            100% { d: path("M0,50 C200,80 400,20 720,45 C1040,70 1240,25 1440,55 L1440,100 L0,100 Z"); }
+            0%   { d: path("M0,78 C200,85 400,65 720,72 C1040,80 1240,62 1440,75 L1440,100 L0,100 Z"); }
+            50%  { d: path("M0,82 C280,70 520,80 720,68 C920,75 1180,82 1440,70 L1440,100 L0,100 Z"); }
+            100% { d: path("M0,78 C200,85 400,65 720,72 C1040,80 1240,62 1440,75 L1440,100 L0,100 Z"); }
         }
         @keyframes waveShift3 {
-            0%   { d: path("M0,70 C300,40 500,60 720,35 C940,10 1150,50 1440,30 L1440,100 L0,100 Z"); }
-            50%  { d: path("M0,45 C260,70 460,30 720,55 C980,35 1180,20 1440,50 L1440,100 L0,100 Z"); }
-            100% { d: path("M0,70 C300,40 500,60 720,35 C940,10 1150,50 1440,30 L1440,100 L0,100 Z"); }
+            0%   { d: path("M0,82 C300,72 500,78 720,70 C940,64 1150,76 1440,68 L1440,100 L0,100 Z"); }
+            50%  { d: path("M0,74 C260,82 460,68 720,76 C980,70 1180,65 1440,78 L1440,100 L0,100 Z"); }
+            100% { d: path("M0,82 C300,72 500,78 720,70 C940,64 1150,76 1440,68 L1440,100 L0,100 Z"); }
         }
         @keyframes waveDark1 {
-            0%   { d: path("M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z"); }
-            50%  { d: path("M0,40 C200,60 380,25 540,45 C720,65 920,35 1080,55 C1220,40 1340,60 1440,45 L1440,80 L0,80 Z"); }
-            100% { d: path("M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z"); }
+            0%   { d: path("M0,55 C180,68 360,70 540,60 C720,50 900,42 1080,52 C1200,60 1320,65 1440,58 L1440,80 L0,80 Z"); }
+            50%  { d: path("M0,50 C200,60 380,45 540,55 C720,62 920,48 1080,56 C1220,50 1340,58 1440,52 L1440,80 L0,80 Z"); }
+            100% { d: path("M0,55 C180,68 360,70 540,60 C720,50 900,42 1080,52 C1200,60 1320,65 1440,58 L1440,80 L0,80 Z"); }
         }
         @keyframes waveDark2 {
-            0%   { d: path("M0,60 C240,35 480,65 720,40 C960,15 1200,45 1440,30 L1440,80 L0,80 Z"); }
-            50%  { d: path("M0,45 C220,65 460,30 720,55 C980,35 1220,60 1440,50 L1440,80 L0,80 Z"); }
-            100% { d: path("M0,60 C240,35 480,65 720,40 C960,15 1200,45 1440,30 L1440,80 L0,80 Z"); }
+            0%   { d: path("M0,62 C240,52 480,65 720,55 C960,48 1200,58 1440,50 L1440,80 L0,80 Z"); }
+            50%  { d: path("M0,56 C220,62 460,50 720,58 C980,52 1220,60 1440,55 L1440,80 L0,80 Z"); }
+            100% { d: path("M0,62 C240,52 480,65 720,55 C960,48 1200,58 1440,50 L1440,80 L0,80 Z"); }
         }
-        .wave-1 { animation: waveShift1 8s ease-in-out infinite; }
-        .wave-2 { animation: waveShift2 10s ease-in-out infinite; }
-        .wave-3 { animation: waveShift3 12s ease-in-out infinite; }
-        .wave-dark-1 { animation: waveDark1 9s ease-in-out infinite; }
-        .wave-dark-2 { animation: waveDark2 11s ease-in-out infinite; }
+        .wave-1 { animation: waveShift1 10s ease-in-out infinite; }
+        .wave-2 { animation: waveShift2 13s ease-in-out infinite; }
+        .wave-3 { animation: waveShift3 16s ease-in-out infinite; }
+        .wave-dark-1 { animation: waveDark1 12s ease-in-out infinite; }
+        .wave-dark-2 { animation: waveDark2 15s ease-in-out infinite; }
 
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
@@ -240,7 +240,7 @@
             <nav class="hidden md:flex gap-10 font-sans text-xs tracking-[0.15em] text-wa_walnut/80 uppercase">
                 <div class="magnetic-wrap"><a href="#philosophy" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Philosophy</a></div>
                 <div class="magnetic-wrap"><a href="packaging.html" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Packaging</a></div>
-                <div class="magnetic-wrap"><a href="#divisions" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Divisions</a></div>
+                <div class="magnetic-wrap"><a href="#strengths" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Strengths</a></div>
                 <div class="magnetic-wrap"><a href="#company" class="link-underline cursor-hover magnetic-target hover:text-wa_moss transition-colors">Company</a></div>
             </nav>
 
@@ -261,8 +261,8 @@
                 <a href="packaging.html" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
                     パウチ事業 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Packaging</span>
                 </a>
-                <a href="#divisions" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
-                    事業領域 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Divisions</span>
+                <a href="#strengths" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
+                    選ばれる理由 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Strengths</span>
                 </a>
                 <a href="#company" class="menu-link font-serif text-xl tracking-widest text-wa_walnut py-5 border-b border-wa_walnut/10 flex items-center justify-between">
                     会社概要 <span class="font-sans text-[0.6rem] text-wa_moss tracking-[0.2em] uppercase">Company</span>
@@ -340,20 +340,13 @@
                     </div>
                 </div>
 
-                <!-- Scroll indicator (bottom center) -->
-                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20" id="hero-scroll">
-                    <span class="font-sans text-[0.6rem] tracking-[0.3em] text-wa_cream/60 uppercase">Scroll</span>
-                    <div class="w-[1px] h-[50px] bg-wa_cream/20 relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-[20px] bg-wa_cream hero-scroll-line"></div>
-                    </div>
-                </div>
 
                 <!-- Animated wave at hero bottom -->
                 <div class="absolute bottom-0 left-0 w-full z-20 pointer-events-none">
-                    <svg class="w-full block" viewBox="0 0 1440 100" preserveAspectRatio="none" style="height: 80px;">
-                        <path class="animated-wave wave-1" d="M0,60 C240,20 480,0 720,30 C960,60 1200,10 1440,40 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="1"/>
-                        <path class="animated-wave wave-2" d="M0,50 C200,80 400,20 720,45 C1040,70 1240,25 1440,55 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="0.5"/>
-                        <path class="animated-wave wave-3" d="M0,70 C300,40 500,60 720,35 C940,10 1150,50 1440,30 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="0.3"/>
+                    <svg class="w-full block" viewBox="0 0 1440 100" preserveAspectRatio="none" style="height: 120px;">
+                        <path class="animated-wave wave-1" d="M0,75 C240,60 480,50 720,62 C960,74 1200,55 1440,65 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="1"/>
+                        <path class="animated-wave wave-2" d="M0,78 C200,85 400,65 720,72 C1040,80 1240,62 1440,75 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="0.4"/>
+                        <path class="animated-wave wave-3" d="M0,82 C300,72 500,78 720,70 C940,64 1150,76 1440,68 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="0.2"/>
                     </svg>
                 </div>
             </section>
@@ -448,9 +441,9 @@
 
                     <!-- Dark animated wave (desktop) -->
                     <div class="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
-                        <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 70px;">
-                            <path class="animated-wave-dark wave-dark-1" d="M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z" fill="#1C1510" opacity="1"/>
-                            <path class="animated-wave-dark wave-dark-2" d="M0,60 C240,35 480,65 720,40 C960,15 1200,45 1440,30 L1440,80 L0,80 Z" fill="#1C1510" opacity="0.5"/>
+                        <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 100px;">
+                            <path class="animated-wave-dark wave-dark-1" d="M0,55 C180,68 360,70 540,60 C720,50 900,42 1080,52 C1200,60 1320,65 1440,58 L1440,80 L0,80 Z" fill="#1C1510" opacity="1"/>
+                            <path class="animated-wave-dark wave-dark-2" d="M0,62 C240,52 480,65 720,55 C960,48 1200,58 1440,50 L1440,80 L0,80 Z" fill="#1C1510" opacity="0.4"/>
                         </svg>
                     </div>
                 </div>
@@ -491,95 +484,134 @@
 
                     <!-- Dark animated wave (mobile) -->
                     <div class="w-full pointer-events-none -mb-1">
-                        <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 50px;">
-                            <path class="animated-wave-dark wave-dark-1" d="M0,50 C180,80 360,80 540,55 C720,30 900,15 1080,40 C1200,55 1320,70 1440,60 L1440,80 L0,80 Z" fill="#1C1510"/>
+                        <svg class="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height: 60px;">
+                            <path class="animated-wave-dark wave-dark-1" d="M0,55 C180,68 360,70 540,60 C720,50 900,42 1080,52 C1200,60 1320,65 1440,58 L1440,80 L0,80 Z" fill="#1C1510"/>
                         </svg>
                     </div>
                 </div>
             </section>
 
             <!-- DIVISIONS -->
-            <section id="divisions" class="py-16 md:py-32 bg-wa_dark text-wa_cream relative z-10 -mt-1">
-                <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <section id="strengths" class="py-16 md:py-32 bg-wa_dark text-wa_cream relative z-10 -mt-1 overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-wa_gold/[0.02] blur-[120px]"></div>
+                <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-wa_moss/[0.03] blur-[100px]"></div>
+
+                <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative">
 
                     <div class="mb-12 md:mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-12 border-b border-white/10 pb-8 md:pb-12">
                         <div class="overflow-hidden">
-                            <h2 class="font-serif text-4xl md:text-5xl tracking-widest mb-4 js-fade-up">多様な事業展開</h2>
-                            <p class="font-sans text-wa_gold tracking-[0.2em] text-xs uppercase js-fade-up">Diverse Divisions of Expertise</p>
+                            <h2 class="font-serif text-4xl md:text-5xl tracking-widest mb-4 js-fade-up">選ばれる理由</h2>
+                            <p class="font-sans text-wa_gold tracking-[0.2em] text-xs uppercase js-fade-up">Why Choose Ayanodou</p>
                         </div>
                         <p class="font-serif text-wa_cream/60 max-w-md text-sm leading-[2.2] js-fade-up">
-                            パッケージ事業で培った品質へのこだわりを胸に、生活を豊かにし、心を潤す多角的な事業を展開しています。
+                            確かな品質と誠実なものづくり。<br>お客様のブランドを、パッケージの力で支えます。
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-16 gap-y-12 md:gap-y-24">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-                        <!-- 03 Traditional Dolls -->
-                        <a href="#" class="bento-card group cursor-hover block js-fade-up">
-                            <div class="relative w-full aspect-[4/3] mb-8 overflow-hidden">
-                                <video src="./images/hina-dolls.mp4" muted loop playsinline preload="metadata" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700" data-hover-play></video>
-                                <div class="absolute inset-0 bento-overlay opacity-60 group-hover:opacity-30 transition-opacity duration-700"></div>
-                                <div class="absolute top-6 left-6 font-serif text-wa_cream text-3xl z-10 font-light">02</div>
-                            </div>
-                            <div>
-                                <h3 class="font-serif text-2xl mb-4 tracking-widest flex items-center justify-between border-b border-white/10 pb-4">
-                                    <span class="flex items-center gap-4">伝統人形事業 <span class="text-xs text-wa_gold tracking-widest block md:inline mt-1 md:mt-0">人形の秀月</span></span>
-                                    <div class="w-8 h-8 rounded-full border border-wa_gold/50 flex items-center justify-center group-hover:bg-wa_gold transition-colors duration-500">
-                                        <i class="ph ph-arrow-up-right text-wa_gold group-hover:text-wa_dark transition-colors"></i>
-                                    </div>
-                                </h3>
-                                <p class="font-sans text-wa_cream/60 text-sm leading-[2]">
-                                    日本の心、職人の技。端午の節句や雛祭りなど、美しい伝統文化を後世へ伝承。細部までこだわり抜かれた手仕事の温もりをお届けします。
-                                </p>
-                            </div>
-                        </a>
+                        <!-- Strength 01: Quality -->
+                        <div class="group js-fade-up relative">
+                            <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
+                                <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
 
-                        <!-- 03 Miniature Uniforms -->
-                        <a href="#" class="bento-card group cursor-hover block js-fade-up" style="transition-delay: 0.1s;">
-                            <div class="relative w-full aspect-square md:aspect-[4/3] mb-8 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1584036531393-5ba2276cb2b3?auto=format&fit=crop&w=800&q=80" alt="Fabric tailoring" class="object-cover w-full h-full opacity-80 group-hover:opacity-100">
-                                <div class="absolute inset-0 bento-overlay opacity-60 group-hover:opacity-30 transition-opacity duration-700"></div>
-                                <div class="absolute top-6 left-6 font-serif text-wa_cream text-3xl z-10 font-light">03</div>
-                            </div>
-                            <div>
-                                <h3 class="font-serif text-2xl mb-4 tracking-widest flex items-center justify-between border-b border-white/10 pb-4">
-                                    ミニチュア制服事業
-                                    <div class="w-8 h-8 rounded-full border border-wa_gold/50 flex items-center justify-center group-hover:bg-wa_gold transition-colors duration-500">
-                                        <i class="ph ph-arrow-up-right text-wa_gold group-hover:text-wa_dark transition-colors"></i>
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
+                                        <i class="ph ph-seal-check text-2xl text-wa_gold"></i>
                                     </div>
-                                </h3>
-                                <p class="font-sans text-wa_cream/60 text-sm leading-[2]">
-                                    かけがえのない想い出を、手のひらサイズに。実際の制服の生地とデザインを活かし、熟練の技術で精巧なミニチュアへとリメイクします。
-                                </p>
-                            </div>
-                        </a>
+                                    <span class="font-serif text-5xl text-white/[0.06] font-light">01</span>
+                                </div>
 
-                        <!-- 04 Natural Stones -->
-                        <a href="#" class="bento-card group cursor-hover block js-fade-up" style="transition-delay: 0.2s;">
-                            <div class="relative w-full aspect-square md:aspect-[4/3] mb-8 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&w=800&q=80" alt="Natural stones" class="object-cover w-full h-full opacity-80 group-hover:opacity-100">
-                                <div class="absolute inset-0 bento-overlay opacity-60 group-hover:opacity-30 transition-opacity duration-700"></div>
-                                <div class="absolute top-6 left-6 font-serif text-wa_cream text-3xl z-10 font-light">04</div>
-                            </div>
-                            <div>
-                                <h3 class="font-serif text-2xl mb-4 tracking-widest flex items-center justify-between border-b border-white/10 pb-4">
-                                    天然石事業
-                                    <div class="w-8 h-8 rounded-full border border-wa_gold/50 flex items-center justify-center group-hover:bg-wa_gold transition-colors duration-500">
-                                        <i class="ph ph-arrow-up-right text-wa_gold group-hover:text-wa_dark transition-colors"></i>
-                                    </div>
+                                <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
+                                    品質への<br>徹底したこだわり
                                 </h3>
-                                <p class="font-sans text-wa_cream/60 text-sm leading-[2]">
-                                    地球が何億年という歳月をかけて育んだ、唯一無二の美しさ。世界中から厳選された高品質な天然石や鉱物の輸入・販売を行っています。
+                                <div class="w-8 h-[1px] bg-wa_gold/40 mb-6 group-hover:w-16 transition-all duration-500"></div>
+                                <p class="font-sans text-wa_cream/50 text-sm leading-[2.2]">
+                                    食品グレードの安全基準を満たした素材選定から、印刷品質の厳格な検査まで。一つひとつのパッケージに妥協のない品質管理を徹底しています。
                                 </p>
+
+                                <div class="mt-8 pt-6 border-t border-white/[0.06]">
+                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
+                                        <i class="ph ph-shield-check"></i>
+                                        <span>ISO品質基準準拠</span>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                        </div>
+
+                        <!-- Strength 02: Craftsmanship -->
+                        <div class="group js-fade-up relative" style="transition-delay: 0.1s;">
+                            <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
+                                <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
+
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
+                                        <i class="ph ph-hand-heart text-2xl text-wa_gold"></i>
+                                    </div>
+                                    <span class="font-serif text-5xl text-white/[0.06] font-light">02</span>
+                                </div>
+
+                                <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
+                                    経験に裏打ちされた<br>提案力
+                                </h3>
+                                <div class="w-8 h-[1px] bg-wa_gold/40 mb-6 group-hover:w-16 transition-all duration-500"></div>
+                                <p class="font-sans text-wa_cream/50 text-sm leading-[2.2]">
+                                    素材の特性、バリア性能、印刷適性を熟知したスタッフが、商品の魅力を最大限に引き出す最適なパッケージをご提案。デザインから製造まで一貫してサポートします。
+                                </p>
+
+                                <div class="mt-8 pt-6 border-t border-white/[0.06]">
+                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
+                                        <i class="ph ph-globe-hemisphere-east"></i>
+                                        <span>30カ国以上の実績</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Strength 03: Trust -->
+                        <div class="group js-fade-up relative" style="transition-delay: 0.2s;">
+                            <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
+                                <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
+
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
+                                        <i class="ph ph-handshake text-2xl text-wa_gold"></i>
+                                    </div>
+                                    <span class="font-serif text-5xl text-white/[0.06] font-light">03</span>
+                                </div>
+
+                                <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
+                                    小ロットから<br>柔軟に対応
+                                </h3>
+                                <div class="w-8 h-[1px] bg-wa_gold/40 mb-6 group-hover:w-16 transition-all duration-500"></div>
+                                <p class="font-sans text-wa_cream/50 text-sm leading-[2.2]">
+                                    100個からの小ロット生産に対応。新ブランドの立ち上げやテストマーケティングにも最適です。短納期・コストパフォーマンスの両立で、お客様のビジネスを加速させます。
+                                </p>
+
+                                <div class="mt-8 pt-6 border-t border-white/[0.06]">
+                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
+                                        <i class="ph ph-lightning"></i>
+                                        <span>最短14日で納品</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
+                </div>
+
+                <!-- Wave transition to cream -->
+                <div class="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
+                    <svg class="w-full block" viewBox="0 0 1440 100" preserveAspectRatio="none" style="height: 100px;">
+                        <path class="animated-wave wave-1" d="M0,75 C240,60 480,50 720,62 C960,74 1200,55 1440,65 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="1"/>
+                        <path class="animated-wave wave-2" d="M0,82 C300,72 500,78 720,70 C940,64 1150,76 1440,68 L1440,100 L0,100 Z" fill="#F4F1E9" opacity="0.3"/>
+                    </svg>
                 </div>
             </section>
 
             <!-- COMPANY PROFILE -->
-            <section id="company" class="py-16 md:py-32 bg-wa_cream relative z-20">
+            <section id="company" class="py-16 md:py-32 bg-wa_cream relative z-20 -mt-1">
                 <div class="max-w-[1000px] mx-auto px-6 md:px-12 relative overflow-hidden">
 
                     <div class="text-center mb-16 js-fade-up">
@@ -661,7 +693,7 @@
                                 <h4 class="text-wa_gold font-medium tracking-[0.2em]">MENU</h4>
                                 <a href="#philosophy" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Philosophy / 企業理念</a>
                                 <a href="packaging.html" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Packaging / パウチ事業</a>
-                                <a href="#divisions" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Divisions / その他事業</a>
+                                <a href="#strengths" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Strengths / 選ばれる理由</a>
                                 <a href="#company" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Company / 会社概要</a>
                             </div>
                             <div class="flex flex-col gap-6">
