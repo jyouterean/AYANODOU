@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /images/packaging/
+
+Sitemap: https://ayanodou.com/sitemap.xml
+
+# LLM Optimization
+# llms.txt: https://ayanodou.com/llms.txt
+# llms-full.txt: https://ayanodou.com/llms-full.txt
