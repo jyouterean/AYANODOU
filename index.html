@@ -112,6 +112,7 @@
 
         /* General Utilities */
         .clip-curtain { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+        .js-reveal-img { opacity: 0; transform: scale(1.08); }
 
         /* Glassmorphism */
         .glass-panel {
@@ -228,13 +229,12 @@
     <!-- Navigation -->
     <header class="fixed top-0 w-full z-40 transition-all duration-500" id="main-header">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
-            <a href="#" class="flex flex-col group magnetic-target cursor-hover" data-magnetic>
-                <div class="overflow-hidden">
-                    <span class="font-serif text-2xl tracking-widest text-wa_walnut font-medium inline-block nav-logo">綾乃堂</span>
+            <a href="#" class="flex items-center gap-4 group magnetic-target cursor-hover" data-magnetic>
+                <div class="w-8 h-8 flex items-center justify-center border border-wa_gold/60 rotate-45 group-hover:rotate-[135deg] transition-transform duration-700">
+                    <span class="-rotate-45 font-serif text-wa_gold text-sm group-hover:-rotate-[135deg] transition-transform duration-700">綾</span>
                 </div>
-                <div class="overflow-hidden">
-                    <span class="font-sans text-[0.65rem] tracking-[0.2em] text-wa_moss mt-1 uppercase inline-block nav-logo-sub">Ayanodou LLC.</span>
-                </div>
+                <span class="font-serif text-xl tracking-[0.2em] text-wa_walnut nav-logo">綾乃堂</span>
+                <span class="hidden md:inline text-[0.6rem] text-wa_gold tracking-[0.3em] pl-4 border-l border-wa_walnut/15 uppercase nav-logo-sub">Corporate</span>
             </a>
 
             <nav class="hidden md:flex gap-10 font-sans text-xs tracking-[0.15em] text-wa_walnut/80 uppercase">
@@ -357,7 +357,7 @@
 
                 <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative flex flex-col md:flex-row gap-16 md:gap-24 items-center">
 
-                    <div class="w-full md:w-5/12 aspect-[3/4] relative overflow-hidden clip-curtain js-reveal-img">
+                    <div class="w-full md:w-5/12 aspect-[3/4] relative overflow-hidden">
                         <div class="absolute inset-0 bg-wa_walnut/10 mix-blend-multiply z-10"></div>
                         <img src="./images/philosophy.jpg" alt="和紙で丁寧に包む職人の手" class="object-cover w-full h-[120%] js-parallax-img" data-speed="0.1">
                         <div class="absolute -bottom-6 -left-6 w-24 h-24 border-l border-b border-wa_moss z-20 hidden md:block"></div>
@@ -386,14 +386,6 @@
                             </p>
                         </div>
 
-                        <div class="mt-12 js-fade-up">
-                            <div class="magnetic-wrap cursor-hover pt-4">
-                                <button class="link-underline font-serif text-wa_walnut tracking-[0.2em] text-sm uppercase flex items-center gap-3">
-                                    <span>Read More</span>
-                                    <i class="ph ph-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -408,7 +400,7 @@
                         <div class="relative w-screen h-full flex-shrink-0 flex items-center overflow-hidden">
                             <div class="absolute top-[5%] -left-[5%] text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">01</div>
                             <div class="max-w-[1600px] mx-auto px-12 relative z-10 flex flex-row items-center w-full">
-                                <div class="w-7/12 aspect-[4/3] overflow-hidden clip-curtain js-reveal-img relative shadow-2xl">
+                                <div class="w-7/12 aspect-[4/3] overflow-hidden relative shadow-2xl">
                                     <img src="./images/pouch-main.jpg" alt="綾乃堂が手がける多彩なパウチ・パッケージ製品" class="object-cover w-full h-[120%]">
                                     <div class="absolute inset-0 bg-wa_walnut/10 mix-blend-overlay"></div>
                                 </div>
@@ -423,7 +415,7 @@
 
                         <!-- PANEL 02: サプリメント事業 -->
                         <div class="relative w-screen h-full flex-shrink-0 flex items-center overflow-hidden">
-                            <div class="absolute top-[5%] -left-[5%] text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">02</div>
+                            <div class="absolute top-[5%] left-[2%] text-[28rem] font-serif text-wa_cream font-bold leading-none select-none z-0 pointer-events-none">02</div>
                             <div class="max-w-[1600px] mx-auto px-12 relative z-10 flex flex-row items-center w-full">
                                 <div class="w-7/12 aspect-[4/3] overflow-hidden relative shadow-2xl">
                                     <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1200&q=80" alt="厳選された天然素材のサプリメント" class="object-cover w-full h-full">
@@ -433,7 +425,7 @@
                                     <span class="font-sans text-wa_gold text-xs tracking-[0.3em] uppercase block mb-6">Supplement</span>
                                     <h3 class="font-serif text-4xl text-wa_walnut mb-8 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-8">サプリメント<br>事業</h3>
                                     <p class="font-sans text-wa_walnut/70 leading-[2] text-base mb-10">大自然の恵みを凝縮し、日々の健康と美しさをサポート。最新の海外原料からOEM製造まで一貫対応。<br><br>GMP準拠の製造体制で安心・安全な製品を企画から販売まで一貫して行い、現代人のライフスタイルに寄り添うサプリメントをお届けします。</p>
-                                    <a href="#" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
+                                    <a href="supplement.html" class="magnetic-wrap cursor-hover inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-8 py-4 text-sm tracking-widest font-sans hover:bg-wa_moss transition-colors rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -477,7 +469,7 @@
                                 <span class="font-sans text-wa_gold text-[0.65rem] tracking-[0.3em] uppercase block mb-4">Supplement</span>
                                 <h3 class="font-serif text-2xl text-wa_walnut mb-4 tracking-widest leading-relaxed border-b border-wa_walnut/10 pb-4">サプリメント事業</h3>
                                 <p class="font-sans text-wa_walnut/70 leading-[1.9] text-sm mb-6">大自然の恵みを凝縮し、日々の健康と美しさをサポート。GMP準拠の製造体制で安心・安全な製品を企画から販売まで一貫して行います。</p>
-                                <a href="#" class="inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-6 py-3 text-xs tracking-widest font-sans rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
+                                <a href="supplement.html" class="inline-flex items-center gap-3 bg-wa_walnut text-wa_cream px-6 py-3 text-xs tracking-widest font-sans rounded-sm">事業詳細を見る <i class="ph ph-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -516,12 +508,7 @@
                             <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
                                 <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
 
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
-                                        <i class="ph ph-seal-check text-2xl text-wa_gold"></i>
-                                    </div>
-                                    <span class="font-serif text-5xl text-white/[0.06] font-light">01</span>
-                                </div>
+                                <span class="font-serif text-5xl text-white/[0.06] font-light mb-8 block">01</span>
 
                                 <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
                                     品質への<br>徹底したこだわり
@@ -532,8 +519,7 @@
                                 </p>
 
                                 <div class="mt-8 pt-6 border-t border-white/[0.06]">
-                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
-                                        <i class="ph ph-shield-check"></i>
+                                    <div class="text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
                                         <span>ISO品質基準準拠</span>
                                     </div>
                                 </div>
@@ -545,12 +531,7 @@
                             <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
                                 <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
 
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
-                                        <i class="ph ph-hand-heart text-2xl text-wa_gold"></i>
-                                    </div>
-                                    <span class="font-serif text-5xl text-white/[0.06] font-light">02</span>
-                                </div>
+                                <span class="font-serif text-5xl text-white/[0.06] font-light mb-8 block">02</span>
 
                                 <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
                                     経験に裏打ちされた<br>提案力
@@ -561,8 +542,7 @@
                                 </p>
 
                                 <div class="mt-8 pt-6 border-t border-white/[0.06]">
-                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
-                                        <i class="ph ph-globe-hemisphere-east"></i>
+                                    <div class="text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
                                         <span>30カ国以上の実績</span>
                                     </div>
                                 </div>
@@ -574,12 +554,7 @@
                             <div class="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] p-10 md:p-12 h-full transition-all duration-700 hover:bg-white/[0.06] hover:border-wa_gold/20">
                                 <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-wa_gold/60 via-wa_gold/20 to-transparent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
 
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="w-14 h-14 rounded-full border border-wa_gold/30 flex items-center justify-center group-hover:border-wa_gold/60 transition-colors duration-500">
-                                        <i class="ph ph-handshake text-2xl text-wa_gold"></i>
-                                    </div>
-                                    <span class="font-serif text-5xl text-white/[0.06] font-light">03</span>
-                                </div>
+                                <span class="font-serif text-5xl text-white/[0.06] font-light mb-8 block">03</span>
 
                                 <h3 class="font-serif text-2xl tracking-widest mb-6 text-wa_cream">
                                     小ロットから<br>柔軟に対応
@@ -590,8 +565,7 @@
                                 </p>
 
                                 <div class="mt-8 pt-6 border-t border-white/[0.06]">
-                                    <div class="flex items-center gap-3 text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
-                                        <i class="ph ph-lightning"></i>
+                                    <div class="text-wa_gold/60 font-sans text-xs tracking-[0.2em]">
                                         <span>最短14日で納品</span>
                                     </div>
                                 </div>
@@ -698,7 +672,7 @@
                             </div>
                             <div class="flex flex-col gap-6">
                                 <h4 class="text-wa_gold font-medium tracking-[0.2em]">LEGAL</h4>
-                                <a href="#" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Privacy Policy / プライバシーポリシー</a>
+                                <a href="privacy-policy.html" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Privacy Policy / プライバシーポリシー</a>
                                 <a href="#" class="link-underline cursor-hover w-fit hover:text-white transition-colors">Commercial Law / 特定商取引法に基づく表記</a>
                             </div>
                         </div>
@@ -806,16 +780,16 @@
             const heroTitle = document.getElementById('hero-title');
             const heroTitleSplit = heroTitle ? new SplitType(heroTitle, { types: 'chars' }) : null;
 
-            // Image curtain reveal
+            // Image reveal — soft center-expand with fade
             tlLoader.fromTo('#hero-img-wrap',
-                { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' },
-                { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1.6, ease: 'power4.inOut' },
+                { clipPath: 'inset(40% 20% 40% 20%)', opacity: 0 },
+                { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.8, ease: 'power3.inOut' },
                 '-=0.8'
             )
             .fromTo('#hero-img',
-                { scale: 1.35 },
-                { scale: 1.15, duration: 2.5, ease: 'power3.out' },
-                '-=1.4'
+                { scale: 1.25 },
+                { scale: 1.15, duration: 2.8, ease: 'power2.out' },
+                '-=1.6'
             )
             // Subtitle line
             .fromTo('.hero-subtitle',
@@ -897,19 +871,20 @@
                 });
 
                 document.querySelectorAll('.js-reveal-img').forEach(el => {
-                    gsap.fromTo(el,
-                        { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' },
-                        { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1, ease: 'power4.inOut',
-                          scrollTrigger: { trigger: el, start: 'top 98%' }
-                        }
+                    const tl = gsap.timeline({
+                        scrollTrigger: { trigger: el, start: 'top 82%' }
+                    });
+                    tl.fromTo(el,
+                        { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)', opacity: 0, scale: 1.08 },
+                        { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, scale: 1, duration: 1.3, ease: 'power3.inOut' }
                     );
                 });
 
                 document.querySelectorAll('.js-fade-up').forEach(el => {
                     gsap.fromTo(el,
                         { y: 40, opacity: 0 },
-                        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
-                          scrollTrigger: { trigger: el, start: 'top 98%' }
+                        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+                          scrollTrigger: { trigger: el, start: 'top 85%' }
                         }
                     );
                 });

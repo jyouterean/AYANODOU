@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サプリメントOEM受託製造 | 合同会社綾乃堂 - AYANODOU</title>
+    <meta name="description" content="合同会社綾乃堂のサプリメント事業。国内GMP準拠工場と連携した処方設計・原料選定・パッケージまでワンストップのOEM受託サービスを提供します。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa_cream: '#F4F1E9',
+                        wa_walnut: '#33261D',
+                        wa_moss: '#68784E',
+                        wa_gold: '#B59A6D',
+                        wa_paper: '#EBE6D8',
+                        wa_dark: '#1C1510'
+                    },
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    spacing: {
+                        'vw-10': '10vw',
+                    },
+                    boxShadow: {
+                        'glow-gold': '0 20px 60px rgba(181, 154, 109, 0.18)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        html, body {
+            width: 100%; min-height: 100%;
+            background-color: #F4F1E9; color: #33261D;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "palt" 1;
+            overflow-x: hidden;
+        }
+        ::selection { background: #68784E; color: #F4F1E9; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #F4F1E9; }
+        ::-webkit-scrollbar-thumb { background: #B59A6D; border-radius: 2px; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(181, 154, 109, 0.25);
+            box-shadow: 0 10px 40px rgba(51, 38, 29, 0.06);
+        }
+
+        /* Decorative vertical line animation */
+        .grow-line {
+            transform-origin: top;
+            animation: growDown 2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+        }
+        @keyframes growDown {
+            0% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* Subtle ambient breathing for images */
+        .ambient-breathe {
+            animation: breathe 10s ease-in-out infinite alternate;
+        }
+        @keyframes breathe {
+            0% { transform: scale(1); filter: brightness(0.95); }
+            100% { transform: scale(1.03); filter: brightness(1.05); }
+        }
+
+        /* Japanese vertical text decoration */
+        .vert-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* Link underline */
+        .link-underline { position: relative; }
+        .link-underline::after {
+            content: ''; position: absolute; width: 100%; transform: scaleX(0);
+            height: 1px; bottom: -4px; left: 0; background-color: currentColor;
+            transform-origin: bottom right; transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .link-underline:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+        /* Horizontal scroll hide */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Fade-up */
+        .fade-up { opacity: 0; transform: translateY(30px); animation: fadeUp 0.9s ease forwards; }
+        .fade-up-delay { animation-delay: 0.2s; }
+        .fade-up-delay-2 { animation-delay: 0.4s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="font-sans font-light leading-relaxed relative bg-wa_cream text-wa_walnut">
+
+    <!-- Ambient Background Glows -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-wa_gold/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-wa_moss/10 rounded-full blur-[150px]"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-wa_cream/85 backdrop-blur-md border-b border-wa_walnut/10">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 group">
+                <div class="w-8 h-8 flex items-center justify-center border border-wa_gold/60 rotate-45 group-hover:rotate-[135deg] transition-transform duration-700">
+                    <span class="-rotate-45 font-serif text-wa_gold text-sm group-hover:-rotate-[135deg] transition-transform duration-700">綾</span>
+                </div>
+                <span class="font-serif text-xl tracking-[0.2em] text-wa_walnut">綾乃堂</span>
+                <span class="hidden md:inline text-[0.6rem] text-wa_gold tracking-[0.3em] pl-4 border-l border-wa_walnut/15 uppercase">Supplement OEM</span>
+            </a>
+            <a href="index.html" class="font-sans text-xs tracking-[0.15em] text-wa_walnut/70 hover:text-wa_walnut transition-colors link-underline">
+                <i class="ph ph-arrow-left mr-2"></i>TOP
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="relative z-10 pt-20">
+
+        <!-- HERO -->
+        <section class="relative min-h-[90vh] flex items-center px-6 lg:px-vw-10">
+            <div class="absolute left-6 lg:left-vw-10 top-0 w-[1px] h-full bg-wa_walnut/10 hidden md:block"></div>
+
+            <div class="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative">
+
+                <!-- Typography -->
+                <div class="lg:col-span-6 z-10 pt-20 lg:pt-0 fade-up">
+                    <p class="text-wa_gold text-xs tracking-[0.4em] mb-6 uppercase flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-wa_gold"></span>
+                        Supplement OEM
+                    </p>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-7xl leading-[1.2] mb-8 text-wa_walnut tracking-wide">
+                        静寂のなかに、<br>
+                        確かな<span class="text-wa_gold italic pr-1">効能</span>を。
+                    </h1>
+                    <p class="text-wa_walnut/70 text-base md:text-lg leading-loose mb-12 max-w-lg font-light">
+                        日本の老舗が培ってきた美意識と、国内GMP準拠工場による先端科学の融合。<br>
+                        処方設計からパッケージデザインまで、ブランドの魂を宿すサプリメントの創造をワンストップで支援いたします。
+                    </p>
+                    <a href="contact.html" class="inline-flex items-center gap-4 border border-wa_walnut/40 px-8 py-4 rounded-sm hover:bg-wa_walnut hover:text-wa_cream hover:border-wa_walnut transition-all duration-300 group">
+                        <span class="tracking-[0.2em] text-sm">ご相談・お見積り</span>
+                        <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Imagery -->
+                <div class="lg:col-span-6 relative mt-12 lg:mt-0 fade-up fade-up-delay">
+                    <div class="relative w-full aspect-[4/5] md:aspect-square lg:aspect-[3/4] overflow-hidden rounded-t-full rounded-b-sm border border-wa_gold/30 p-2 shadow-glow-gold bg-wa_paper">
+                        <img src="images/supplement-hero.png"
+                             alt="サプリメントカプセルと天然素材。乳鉢、エッセンシャルオイル瓶、ハーブが並ぶ静物写真。"
+                             class="w-full h-full object-cover rounded-t-[calc(50%-8px)] rounded-b-sm ambient-breathe">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-70">
+                <span class="text-[10px] tracking-[0.3em] uppercase vert-text text-wa_walnut/60">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-wa_gold to-transparent grow-line"></div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-wa_gold/40 to-transparent my-10"></div>
+
+        <!-- CONCEPT -->
+        <section class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+
+                    <div class="order-2 md:order-1 relative">
+                        <div class="absolute -top-8 -left-8 w-32 h-32 bg-wa_moss/15 border border-wa_moss/40 rounded-sm -z-10"></div>
+                        <img src="images/supplement-concept.png"
+                             alt="和紙の上の乳鉢と白い粉末、クコの実と菊花。原料の精製プロセス。"
+                             class="w-full aspect-[4/3] object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 border border-wa_walnut/10">
+                    </div>
+
+                    <div class="order-1 md:order-2">
+                        <h2 class="text-wa_gold text-xs tracking-[0.4em] mb-4 uppercase">Concept</h2>
+                        <h3 class="font-serif text-3xl md:text-4xl leading-tight mb-8 text-wa_walnut">
+                            妥協なき品質が、<br>
+                            ブランドの品格を創る。
+                        </h3>
+                        <div class="space-y-6 text-wa_walnut/75 text-sm md:text-base leading-loose font-light">
+                            <p>
+                                健康食品・サプリメント市場において、消費者の目はかつてなく厳しくなっています。「ただ栄養を補給する」時代は終わり、ライフスタイルの一部としての機能と美しさが求められています。
+                            </p>
+                            <p>
+                                綾乃堂は、日本の伝統的な漢方発想から最先端のエビデンスを持つ成分まで、世界中から優れた原料を厳選。国内トップクラスのGMP準拠工場と連携し、小ロットのテストマーケティングから大規模なマス生産まで、高水準の品質を保証します。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- STRENGTHS -->
+        <section class="py-24 relative bg-wa_paper/60 border-y border-wa_walnut/10">
+            <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image:url('https://www.transparenttextures.com/patterns/rice-paper.png');"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="text-wa_gold text-xs tracking-[0.4em] mb-4 uppercase">Our Strengths</h2>
+                    <h3 class="font-serif text-3xl md:text-4xl text-wa_walnut">綾乃堂が選ばれる理由</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass-panel p-8 md:p-10 rounded-sm hover:-translate-y-2 transition-transform duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-wa_gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <h4 class="font-serif text-xl mb-4 text-wa_walnut">国内GMP準拠の製造網</h4>
+                        <p class="text-wa_walnut/70 text-sm leading-relaxed font-light">
+                            厳しい安全基準をクリアした国内の提携工場網による製造体制。カプセル、打錠、粉末、ドリンクまで、あらゆる剤形に対応し、確かな品質と安全性を担保します。
+                        </p>
+                    </div>
+
+                    <!-- Card 2 (staggered) -->
+                    <div class="glass-panel p-8 md:p-10 rounded-sm hover:-translate-y-2 transition-transform duration-500 group relative overflow-hidden md:mt-10">
+                        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-wa_gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <h4 class="font-serif text-xl mb-4 text-wa_walnut">オーダーメイド処方設計</h4>
+                        <p class="text-wa_walnut/70 text-sm leading-relaxed font-light">
+                            専属の処方設計師が、貴社のターゲットやブランドコンセプトに基づき、独自性の高い成分配合をご提案。エビデンス重視から体感重視まで柔軟に対応いたします。
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-panel p-8 md:p-10 rounded-sm hover:-translate-y-2 transition-transform duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-wa_gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <h4 class="font-serif text-xl mb-4 text-wa_walnut">意匠と世界観の統合</h4>
+                        <p class="text-wa_walnut/70 text-sm leading-relaxed font-light">
+                            中身の開発だけでなく、化粧箱、ボトル、ラベルのデザインまで一貫してプロデュース。手にした瞬間に「高揚感」と「信頼」を伝えるパッケージをデザインします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEVELOPMENT DOMAINS -->
+        <section class="py-24 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-6 mb-16">
+                <h2 class="text-wa_gold text-xs tracking-[0.4em] mb-4 uppercase">Development Domains</h2>
+                <h3 class="font-serif text-3xl md:text-4xl text-wa_walnut">開発領域</h3>
+            </div>
+
+            <div class="flex gap-6 overflow-x-auto px-6 pb-12 snap-x snap-mandatory hide-scroll lg:grid lg:grid-cols-4 lg:overflow-visible">
+
+                <div class="relative min-w-[80vw] md:min-w-[40vw] lg:min-w-0 h-[60vh] snap-center group overflow-hidden border border-wa_walnut/10">
+                    <img src="images/supplement-wellness.png" alt="リネンの上に乳鉢とカプセル、クコの実や和漢素材。健康・ウェルネス分野。" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-wa_walnut via-wa_walnut/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <p class="text-wa_gold text-xs tracking-[0.2em] mb-2 font-serif">Wellness & Health</p>
+                        <h4 class="font-serif text-2xl mb-3 text-wa_cream">健康・ウェルネス</h4>
+                        <p class="text-sm text-wa_cream/85 font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            和漢素材、ビタミン、乳酸菌などを活用し、日常の体調管理から特定の悩みに対するアプローチまで。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative min-w-[80vw] md:min-w-[40vw] lg:min-w-0 h-[60vh] snap-center group overflow-hidden border border-wa_walnut/10 mt-0 lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=800&q=80" alt="透明なガラスの滴。インナービューティー分野。" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter sepia-[0.2]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-wa_walnut via-wa_walnut/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <p class="text-wa_gold text-xs tracking-[0.2em] mb-2 font-serif">Inner Beauty</p>
+                        <h4 class="font-serif text-2xl mb-3 text-wa_cream">美容・エイジングケア</h4>
+                        <p class="text-sm text-wa_cream/85 font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            プラセンタ、セラミド、コラーゲンなどの高級美容成分を贅沢に配合。体内から美しさを惹き出します。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative min-w-[80vw] md:min-w-[40vw] lg:min-w-0 h-[60vh] snap-center group overflow-hidden border border-wa_walnut/10">
+                    <img src="images/supplement-sleep.png" alt="クリーム色の背景にサプリメントボトルとカプセル、カモミールとラベンダー。睡眠・リラクゼーション分野。" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-wa_walnut via-wa_walnut/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <p class="text-wa_gold text-xs tracking-[0.2em] mb-2 font-serif">Sleep & Refresh</p>
+                        <h4 class="font-serif text-2xl mb-3 text-wa_cream">睡眠・リラクゼーション</h4>
+                        <p class="text-sm text-wa_cream/85 font-light translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            現代社会のストレスに着目。GABAやテアニンなどを効果的に配合し、上質な休息をサポートします。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative min-w-[80vw] md:min-w-[40vw] lg:min-w-0 h-[60vh] snap-center group overflow-hidden border border-wa_walnut/10 mt-0 lg:mt-12 bg-wa_paper flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <i class="ph ph-kanban text-4xl text-wa_gold block mb-4"></i>
+                        <h4 class="font-serif text-xl mb-4 text-wa_walnut">その他、特殊処方</h4>
+                        <p class="text-sm text-wa_walnut/65 font-light border-b border-wa_walnut/20 pb-4">
+                            スポーツニュートリション、ペット用サプリメントなど、多様なニーズに応じた企画開発も承ります。お気軽にご相談ください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="py-24 max-w-4xl mx-auto px-6 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-wa_gold text-xs tracking-[0.4em] mb-4 uppercase">OEM Process</h2>
+                <h3 class="font-serif text-3xl md:text-4xl text-wa_walnut">製品化までの道のり</h3>
+            </div>
+
+            <div class="relative border-l border-wa_walnut/15 ml-4 md:ml-0 md:border-l-0">
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-wa_walnut/15 -translate-x-1/2"></div>
+
+                <div class="space-y-16 relative">
+                    <!-- 壱 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-[45%] text-left md:text-right pl-8 md:pl-0 order-2 md:order-1 mt-4 md:mt-0">
+                            <h4 class="font-serif text-xl text-wa_gold mb-2">01. ヒアリング・企画</h4>
+                            <p class="text-sm text-wa_walnut/70 font-light leading-relaxed">
+                                ブランドのビジョン、ターゲット層、希望の効能・価格帯などを詳細にヒアリング。市場トレンドを分析し、最適な製品コンセプトを立案します。
+                            </p>
+                        </div>
+                        <div class="absolute left-[-5px] md:relative md:left-auto w-10 h-10 bg-wa_cream border border-wa_gold rounded-full flex items-center justify-center font-serif text-wa_gold z-10 order-1 md:order-2 shadow-glow-gold group-hover:bg-wa_gold group-hover:text-wa_cream transition-colors duration-300">
+                            壱
+                        </div>
+                        <div class="md:w-[45%] hidden md:block order-3"></div>
+                    </div>
+
+                    <!-- 弐 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-[45%] hidden md:block order-1"></div>
+                        <div class="absolute left-[-5px] md:relative md:left-auto w-10 h-10 bg-wa_cream border border-wa_gold rounded-full flex items-center justify-center font-serif text-wa_gold z-10 order-1 md:order-2 shadow-glow-gold group-hover:bg-wa_gold group-hover:text-wa_cream transition-colors duration-300">
+                            弐
+                        </div>
+                        <div class="md:w-[45%] text-left pl-8 md:pl-0 order-2 md:order-3 mt-4 md:mt-0">
+                            <h4 class="font-serif text-xl text-wa_gold mb-2">02. 処方決定・試作</h4>
+                            <p class="text-sm text-wa_walnut/70 font-light leading-relaxed">
+                                経験豊富な研究員が原料を選定し、処方を組み上げます。風味や打錠の硬さなど、納得がいくまで試作と改良を重ねます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 参 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-[45%] text-left md:text-right pl-8 md:pl-0 order-2 md:order-1 mt-4 md:mt-0">
+                            <h4 class="font-serif text-xl text-wa_gold mb-2">03. デザイン・包材決定</h4>
+                            <p class="text-sm text-wa_walnut/70 font-light leading-relaxed">
+                                処方と並行して、容器やパッケージのデザインを進行。素材の選定から印刷技術まで、高級感を演出するためのご提案を行います。
+                            </p>
+                        </div>
+                        <div class="absolute left-[-5px] md:relative md:left-auto w-10 h-10 bg-wa_cream border border-wa_gold rounded-full flex items-center justify-center font-serif text-wa_gold z-10 order-1 md:order-2 shadow-glow-gold group-hover:bg-wa_gold group-hover:text-wa_cream transition-colors duration-300">
+                            参
+                        </div>
+                        <div class="md:w-[45%] hidden md:block order-3"></div>
+                    </div>
+
+                    <!-- 四 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-[45%] hidden md:block order-1"></div>
+                        <div class="absolute left-[-5px] md:relative md:left-auto w-10 h-10 bg-wa_cream border border-wa_gold rounded-full flex items-center justify-center font-serif text-wa_gold z-10 order-1 md:order-2 shadow-glow-gold group-hover:bg-wa_gold group-hover:text-wa_cream transition-colors duration-300">
+                            四
+                        </div>
+                        <div class="md:w-[45%] text-left pl-8 md:pl-0 order-2 md:order-3 mt-4 md:mt-0">
+                            <h4 class="font-serif text-xl text-wa_gold mb-2">04. 製造・品質検査・納品</h4>
+                            <p class="text-sm text-wa_walnut/70 font-light leading-relaxed">
+                                決定した仕様に基づき、GMP準拠の提携工場にて製造を開始。厳格な品質検査を実施し、合格した製品のみを安全に指定場所へと納品いたします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" class="py-32 relative border-t border-wa_walnut/10 bg-gradient-to-b from-wa_cream to-wa_paper">
+            <div class="absolute inset-0 bg-wa_gold/10 blur-[100px] pointer-events-none"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <i class="ph ph-envelope-simple text-4xl text-wa_gold block mb-6"></i>
+                <h2 class="font-serif text-3xl md:text-5xl mb-6 tracking-wide text-wa_walnut">
+                    新たな価値の創造を、<br class="md:hidden">共に。
+                </h2>
+                <p class="text-wa_walnut/70 mb-12 text-sm md:text-base leading-loose max-w-2xl mx-auto font-light">
+                    小ロットからのテストマーケティング、大規模なOEM生産、または既存製品の処方見直しなど、些細なことでもお気軽にご相談ください。<br>
+                    担当者が心を込めて対応いたします。
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="contact.html" class="inline-flex items-center justify-center gap-3 bg-wa_walnut text-wa_cream px-10 py-5 rounded-sm hover:bg-wa_moss transition-all font-medium tracking-[0.2em] relative overflow-hidden group">
+                        <span class="relative">お問い合わせ窓口</span>
+                        <i class="ph ph-arrow-up-right relative text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-wa_dark text-wa_cream pt-16 pb-12 relative z-10">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-[0.65rem] text-wa_cream/30 tracking-[0.2em] uppercase">
+                <p>&copy; 2024 Ayanodou LLC. All Rights Reserved.</p>
+                <div class="flex items-center gap-3">
+                    <span>Tokyo</span>
+                    <span class="w-[3px] h-[3px] rounded-full bg-wa_gold"></span>
+                    <span>Japan</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
