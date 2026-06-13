@@ -125,7 +125,16 @@
             <!-- FORM -->
             <div class="glass-panel p-8 md:p-16 border-t-4 border-wa_gold fade-up fade-up-delay">
 
-                <form action="#" method="POST" class="font-sans text-sm text-wa_walnut space-y-8">
+                <form action="https://formspree.io/f/mbdepqgw" method="POST" class="font-sans text-sm text-wa_walnut space-y-8">
+
+                    <!-- スパム対策 (ハニーポット: ボットだけが入力する不可視フィールド) -->
+                    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+                    <!-- メール件名 -->
+                    <input type="hidden" name="_subject" value="【綾乃堂】お問い合わせフォームより新着">
+
+                    <!-- 送信後のリダイレクト先 -->
+                    <input type="hidden" name="_next" value="https://ayanodou.com/thanks.html">
 
                     <!-- 姓・名 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
